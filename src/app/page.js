@@ -7,7 +7,7 @@ export default function Home() {
       <header className="bg-black ">
         <h1 className="text-center text-5xl bg-black ">WELCOME TO KOUtop</h1>
       </header>
-      <iframe width="100%" height="100%" src="https://iframer.strmrdrfrooc.click/index.php?id=601#poster=https%3A%2F%2Fwww.selcuksportshd1374.xyz%2Fimg%2Fg%2Fcrtswp-s-min.png&amp;reklamResim=https%3A%2F%2Fwww.selcuksportshd1374.xyz%2Fimg%2Fg%2Fpshg-min-min.gif&amp;reklamGidis=https%3A%2F%2Fcutt.ly%2Fselcuksportspsh" id="iframe" title="Video Oynatıcı" frameborder="0" scrolling="no" allowfullscreen="" className="block"></iframe>
+      <iframe width="100%" height="100%" src="https://iframeri.strmrdrfrooc.click/index.php?id=3450#poster=https%3A%2F%2Fwww.selcuksportshd1374.xyz%2Fimg%2Fg%2Fcrtswp-s-min.png&amp;reklamResim=https%3A%2F%2Fwww.selcuksportshd1374.xyz%2Fimg%2Fg%2Fpshg-min-min.gif&amp;reklamGidis=https%3A%2F%2Fcutt.ly%2Fselcuksportspsh" id="iframe" title="Video Oynatıcı" frameborder="0" scrolling="no" allowfullscreen="" ></iframe>
       </main>
   
     </div>
