@@ -1,6 +1,6 @@
 
 import Image from "next/image";
-import kura from "/home/thodex/Desktop/kura.com/kura/src/app/_IMGE/kura.png"
+import kura from "@/app/_IMGE/kura.png"
 
  const Nav = () => {
   return (

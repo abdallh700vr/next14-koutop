@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
 import Video from 'next-video';
- import a from '/home/thodex/Desktop/kura.com/kura/videos/ad.mp4'
- import foto from "../_IMGE/foto.jpeg"
+import a from "../videos/ad.mp4"
+ import foto from "../src/app/_IMGE/foto.jpeg"
 export const Ad = ({setTrigger}) => {
 
 const handleSkip = ()=>{

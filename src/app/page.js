@@ -1,5 +1,5 @@
 
-import Video from "./_Componets/Video";
+import Video from "../../_Componets/Video";
 
 export default function Home() {
 
