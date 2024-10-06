@@ -1,10 +1,10 @@
 "use client"
 import React from 'react'
 
-export const Match = ({chanel,link}) => {
+export const Match = ({chanel,link,setCurrent,isVideo}) => {
 
 const handleClick = ()=>{
-    
+    setCurrent({url:link,isVideo:isVideo})
 }
   return (
     <button onClick={handleClick} className="flex flex-row justify-center items-center min-h-16 min-w-96 bg-black gap-4 rounded-full ">
