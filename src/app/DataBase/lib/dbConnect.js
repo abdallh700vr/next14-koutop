@@ -13,7 +13,7 @@ if(mongoose.connections[0].readyState)
 
 
 try {
-   await mongoose.connect(process.env.MONGO_URL)
+   await mongoose.connect("mongodb+srv://kurasporthd:wIEBqpsePcvheHHE@cluster0.pkmjm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
    console.log("\n\n-----------------------mongodb connected");
   return true;
     
