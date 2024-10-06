@@ -16,7 +16,7 @@ const Content = () => {
 useEffect(()=>{
 
 
-console.log("am in -----------------useeffect")
+console.log("am in -----------------useeffect",window.location.origin)
 const GetPlayList = async ()=>{
     try {
 
@@ -50,8 +50,8 @@ const List = PlayList.map((match) => {
   return (
     <>
 
-    <div className="flex flex-col justify-center items-center min-h-[700px] min-w-96 bg-red-600">
-      <div className="border-2 border-green-400  min-h-[200px]  min-w-96"> 
+    <div className="flex flex-col justify-center items-center min-h-[700px] border-l-2 border-green-300 min-w-96">
+      <div className=" min-h-[200px]  min-w-96"> 
         
       </div>
       <div className="border-2 flex-1 flex flex-col border-green-400  min-h-[500px]  min-w-96 overflow-y-auto gap-1 pt-1">
