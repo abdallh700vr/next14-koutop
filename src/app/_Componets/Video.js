@@ -3,7 +3,7 @@
 import React,{useState} from 'react'
 
 import { Ad } from './Ad'
-const Video = () => {
+const Video = ({url}) => {
 
 const [trigger,setTrigger] = useState(false)
 

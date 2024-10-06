@@ -18,7 +18,7 @@ import kura from "@/app/_IMGE/kura.png"
 
 
     <button className="  text-center  min-w-40">
-    <a href="https://www.telegram.com" className="text-2xl text-center min-w-40 text-green-300 font-bold animate-pulse ">للإعلانات</a>
+    <a href="https://www.telegram.com" className="text-2xl text-center min-w-40 text-green-300 font-bold  ">للإعلانات</a>
     </button>
  
 

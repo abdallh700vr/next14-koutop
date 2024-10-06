@@ -1,5 +1,5 @@
 
-import Video from "./_Componets/Video";
+import Content from "./_Componets/Content";
 
 export default function Home() {
 
@@ -16,19 +16,7 @@ export default function Home() {
       </div>
 
 
-     <div className="flex flex-col justify-center items-center min-h-[700px] min-w-96 bg-red-600">
-      <div className="border-2 border-green-400  min-h-[200px]  min-w-96"> 
-        
-      </div>
-      <div className="border-2 flex-1 border-green-400  min-h-[500px]  min-w-96">
-
-      </div>
-
-     </div>
-
-
-   
-      <Video/>
+      <Content />
     
 
      </div>
