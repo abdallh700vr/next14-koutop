@@ -5,7 +5,7 @@ export const Iframe = ({url}) => {
 
 
   return (<div className=" w-full">
- <iframe width="100%" height="100%" src={url} id="iframe" title="Video Oynatıcı" frameborder="0" scrolling="no" allowfullscreen="" ></iframe> 
+<div className="h-full"><iframe className="h-full w-full" src="https://vimeo.com/event/4634433/embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen ></iframe></div>
   </div>
     
   )
