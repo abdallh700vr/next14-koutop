@@ -3,22 +3,24 @@ import VideoStream from './Video'
 import React,{useState,useEffect} from 'react'
 import { Match } from './Match'
 import { Iframe } from './Iframe'
-import { useRouter } from 'next/router'
+
 
 const Content = () => {
 
     const [PlayList,setPlayList] = useState([]);
     const [Current,setCurrent] = useState({url:"",isVideo:false})
-    const path = useRouter()
+
+
+
 
 useEffect(()=>{
 
-  const Link = path.pathname
+
 console.log("am in -----------------useeffect")
 const GetPlayList = async ()=>{
     try {
 
-        const response = await fetch(`${Link}/api/playlist`, {
+        const response = await fetch(`${window.location.origin}/api/playlist`, {
             method:"GET"
           })
 
