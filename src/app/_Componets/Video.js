@@ -1,5 +1,5 @@
 'use client'
-import Video from 'next-video';
+import Video from "next-video"
 import React,{useState} from 'react'
 
 const VideoStream = ({url}) => {
