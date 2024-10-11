@@ -20,11 +20,15 @@ export async function POST(req) {
     const LaligaStatus = await Laliga(TargetDate);
     const preimeirStatus = await premier(TargetDate);
     const ChampionsStatus = await Champions(TargetDate);
+    const IraqStatus = await Iraq();
+
+
 
     return NextResponse.json({
       LaligaStatus:LaligaStatus,
       preimeirStatus:preimeirStatus,
-      ChampionsStatus:ChampionsStatus
+      ChampionsStatus:ChampionsStatus,
+      IraqStatus:IraqStatus
     },{status:200})
       
     } catch (error) {
@@ -62,7 +66,7 @@ async function  Laliga (date) {
 
 
 
-        return {LalgiaStatus:200}
+        return {LalgiaStatus:data.status}
     } catch (error) {
       
        console.log("the error ",error.message)
@@ -95,7 +99,7 @@ async function   premier (date) {
 
 
 
-        return {LalgiaStatus:200}
+        return {LalgiaStatus:data.status}
     } catch (error) {
       
        console.log("the error ",error.message)
@@ -129,7 +133,7 @@ async function   Champions(date) {
 
 
 
-        return {ChampionsL:200}
+        return {ChampionsL:data.status}
     } catch (error) {
       
        console.log("the error ",error.message)
@@ -137,3 +141,31 @@ async function   Champions(date) {
     }
     
 }
+
+
+async function  Iraq () {
+
+  try {
+
+    const data  =  await axios.get(process.env.APİ_IRAQ)
+
+       const maches = data.data.result;
+       const id = 4;
+      
+     const newGameList  =  new GamesList({id,maches});
+      await newGameList.save();
+
+
+
+
+        return {IraqStatus:data.status}
+    } catch (error) {
+      
+       console.log("the error ",error.message)
+       return {LalgiaStatus:400}
+    }
+    
+}
+
+
+
