@@ -9,27 +9,23 @@ export async function POST(req) {
     
     const date = new Date()
     const day = date.getDate()<10 ?  "0"+String(date.getDate()) : date.getDate()
+    const day7 = date.getDate()+7<10 ?  "0"+String(date.getDate()+7) : date.getDate()+7
     const month = String(date.getMonth()+1)//bc getmonth start from 0 this why +1
     const year = String(date.getFullYear())
-    const TargetDate = `${year}-${month}-${day+1}`
-
+    const FromDate = `${year}-${month}-${day}`
+    const ToDate = `${year}-${month}-${day7}`
     try {
 
 
 
-    const LaligaStatus = await Laliga(TargetDate);
-    const preimeirStatus = await premier(TargetDate);
-    const ChampionsStatus = await Champions(TargetDate);
-    const IraqStatus = await Iraq();
+    // const LaligaStatus = await Laliga(FromDate,ToDate);
+    //  const preimeirStatus = await premier(FromDate,ToDate);
+     const ChampionsStatus = await Champions(FromDate,ToDate);
+    // const IraqStatus = await Iraq(FromDate,ToDate);
 
 
 
-    return NextResponse.json({
-      LaligaStatus:LaligaStatus,
-      preimeirStatus:preimeirStatus,
-      ChampionsStatus:ChampionsStatus,
-      IraqStatus:IraqStatus
-    },{status:200})
+    return NextResponse.json({status:200})
       
     } catch (error) {
       console.log("the error from Post : ",error.message)
@@ -42,19 +38,19 @@ export async function POST(req) {
 }
 
 
-async function  Laliga (date) {
+async function  Laliga (Fromdate,toDate) {
 
   try {
-    console.log(date)
+   
     const data  =  await axios.get(`https://api.football-data.org/v4/competitions/PD/matches`, {
-        headers: {
-          'X-Auth-Token':process.env.API_KEY,
+      headers: {
+        'X-Auth-Token':process.env.API_KEY,
+      },
+      params: {
+          dateFrom: Fromdate,
+          dateTo: toDate,
         },
-        params: {
-            dateFrom: date,
-            dateTo: date,
-          },
-      })
+    })
 
        const maches = data.data.matches;
 
@@ -69,14 +65,14 @@ async function  Laliga (date) {
         return {LalgiaStatus:data.status}
     } catch (error) {
       
-       console.log("the error ",error.message)
+       console.log("the error ",error)
        return {LalgiaStatus:400};
     }
     
 }
 
 
-async function   premier (date) {
+async function   premier (Fromdate,toDate) {
 
   try {
 
@@ -85,8 +81,8 @@ async function   premier (date) {
           'X-Auth-Token':process.env.API_KEY,
         },
         params: {
-            dateFrom: date,
-            dateTo: date,
+            dateFrom: Fromdate,
+            dateTo: toDate,
           },
       })
 
@@ -99,31 +95,27 @@ async function   premier (date) {
 
 
 
-        return {LalgiaStatus:data.status}
+        return {premier:data.status}
     } catch (error) {
       
-       console.log("the error ",error.message)
-       return {LalgiaStatus:400}
+       console.log("the error ",error)
+       return {premier:400}
     }
     
 }
 
 
 
-async function   Champions(date) {
+async function   Champions(Fromdate,toDate) {
 
   try {
 
-    const data  =  await axios.get(`https://api.football-data.org/v4/competitions/CL/matches`, {
-        headers: {
-          'X-Auth-Token':process.env.API_KEY,
-        },
-        params: {
-            dateFrom: date,
-            dateTo: date,
-          },
-      })
-
+    const data  =  await axios.get(`https://api.football-data.org/v4/competitions/PL/matches`, {
+      headers: {
+        'X-Auth-Token':process.env.API_KEY,
+      },
+    })
+     
        const maches = data.data.matches;
        const id = 3;
       
@@ -137,21 +129,31 @@ async function   Champions(date) {
     } catch (error) {
       
        console.log("the error ",error.message)
-       return {LalgiaStatus:400}
+       return {Champions:400}
     }
     
 }
 
 
-async function  Iraq () {
+async function  Iraq (Fromdate,toDate) {
 
   try {
 
-    const data  =  await axios.get(process.env.APİ_IRAQ)
+    const data  =  await axios.get(`https://apiv2.allsportsapi.com/football`,{
+      params:{
+        met:"Fixtures",
+        APIkey:"5f714a546bb936be3d7cbfd94338c919602b2c6a124313d21281fb548e3ea768",
+        from:Fromdate,
+        to:toDate,
+        teamId:642
+      }
+    })
 
        const maches = data.data.result;
        const id = 4;
       
+
+    
      const newGameList  =  new GamesList({id,maches});
       await newGameList.save();
 
@@ -161,8 +163,8 @@ async function  Iraq () {
         return {IraqStatus:data.status}
     } catch (error) {
       
-       console.log("the error ",error.message)
-       return {LalgiaStatus:400}
+       console.log("the error ",error)
+       return {IraqStatus:400}
     }
     
 }
